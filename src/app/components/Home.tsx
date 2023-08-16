@@ -1,6 +1,6 @@
 "use client";
 
-import Map from "./maps/Map";
+import Map from "./maps/Map.jsx";
 import { GameProvider } from "../context/GameContext";
 
 const Home = () => {

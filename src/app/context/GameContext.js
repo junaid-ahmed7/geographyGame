@@ -3,7 +3,6 @@ import gameReducer, { initialState } from "../reducers/gameReducers";
 
 const GameContext = createContext(initialState);
 
-// Define the GameProvider
 const GameProvider = ({ children }) => {
   const [state, dispatch] = useReducer(gameReducer, initialState);
 
