@@ -5,7 +5,7 @@ import Map from "./maps/Map";
 const Home = () => {
   return (
     <>
-    <h1>Map Game</h1>
+    <h1>Population Game</h1>
     <Map />
     </>
   )
