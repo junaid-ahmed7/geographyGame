@@ -15,9 +15,25 @@ const GameProvider = ({ children }) => {
     });
   };
 
+  const countryClicked = (country) => {
+    console.log(country, "clicked");
+    dispatch({
+      type: "COUNTRY_CLICKED",
+      payload: {
+        name: country.cName,
+        officialName: country.val[1],
+        capitals: country.val[2],
+        population: country.val[0],
+        flag: country.val[3],
+        isoCode: country.iso,
+      },
+    });
+  };
+
   const value = {
     ...state,
     gameOver,
+    countryClicked,
   };
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
 };

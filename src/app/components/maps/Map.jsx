@@ -1,10 +1,9 @@
-import React, { useMemo, useCallback, useState, useRef } from "react";
+import React, { useMemo, useCallback, useState } from "react";
 import WorldMap from "react-svg-worldmap";
 import countriesDatabase from "../../../../database/countryDatabase.json";
 import MapGame from "./MapGame.jsx";
 
 function Map() {
-
   // Memoize the data array to prevent unnecessary re-renders
   const data = useMemo(() => {
     return countriesDatabase.map((country) => {
@@ -32,10 +31,14 @@ function Map() {
     });
   }, []);
 
+  const noText = () => {
+    return "";
+  };
+
   return (
     <div className="App">
       <WorldMap
-        color="red"
+        color=""
         title="Start by selecting the country you think is the most populous!"
         value-suffix="people"
         size="xxl"
@@ -43,6 +46,7 @@ function Map() {
         onClickFunction={countryClicked}
         backgroundColor="black"
         borderColor="white"
+        tooltipTextFunction={noText}
       />
       <MapGame clickedCountry={clickedCountry} />
     </div>

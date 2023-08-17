@@ -1,32 +1,32 @@
 import { useGameContext } from "../../context/GameContext";
-import { useState, useEffect } from "react";
-import { formatPopulation } from "../../../../utils/utilFunctions";
+import { useEffect } from "react";
 
 const MapGame = ({ clickedCountry }) => {
-  const { lostGame, gameOver } = useGameContext();
-
-  const [country, setCountry] = useState({
-    name: "Select Country",
-    population: "0",
-  });
+  const gameState = useGameContext();
 
   useEffect(() => {
     if (clickedCountry) {
-      setCountry({
-        name: clickedCountry.cName,
-        population: formatPopulation(clickedCountry.val[0]) + " people!",
-      });
+      gameState.countryClicked(clickedCountry);
     }
   }, [clickedCountry]);
 
   return (
     <>
-      <p>Lost Game: {lostGame ? "Yes" : "No"}</p>
-      <button onClick={gameOver}>Lost</button>
+      <p>Lost Game: {gameState.lostGame ? "Yes" : "No"}</p>
+      <p>current streak: {gameState.currentNumber}</p>
+      <button onClick={gameState.gameOver}>Lost</button>
       <ul>
-        <li>Country: {country.name}</li>
-        <li>population: {country.population}</li>
+        <li>Country: {gameState.name}</li>
+        <li>Official Name: {gameState.officialName}</li>
+        <li>Population: {gameState.population}</li>
+        <ul>
+          Capital(s):
+          {gameState.capitals.map((capital, index) => {
+            return <li key={index}> - {capital}</li>;
+          })}
+        </ul>
       </ul>
+      <img src={gameState.flag}></img>
     </>
   );
 };
