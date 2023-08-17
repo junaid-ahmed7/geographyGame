@@ -14,7 +14,7 @@ const MapGame = ({ clickedCountry }) => {
     <>
       <p>Lost Game: {gameState.lostGame ? "Yes" : "No"}</p>
       <p>current streak: {gameState.currentNumber}</p>
-      <button onClick={gameState.gameOver}>Lost</button>
+      <button onClick={gameState.gameReset}>Reset</button>
       <ul>
         <li>Country: {gameState.name}</li>
         <li>Official Name: {gameState.officialName}</li>
@@ -22,7 +22,7 @@ const MapGame = ({ clickedCountry }) => {
         <ul>
           Capital(s):
           {gameState.capitals.map((capital, index) => {
-            return <li key={index}> - {capital}</li>;
+            return <li key={index}> - {capital}</li>
           })}
         </ul>
       </ul>

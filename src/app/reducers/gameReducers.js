@@ -1,4 +1,5 @@
 import { formatPopulation } from "../../../utils/utilFunctions";
+import sortedPopulations from "../../../database/sortedByPopulation";
 
 export const initialState = {
   currentNumber: 0,
@@ -13,26 +14,30 @@ export const initialState = {
 
 const gameReducer = (state, action) => {
   switch (action.type) {
-    case "LOST_GAME":
-      console.log("LOST_GAME", action);
+    case "RESET_GAME":
+      console.log("RESET_GAME");
 
       return {
-        ...state,
-        lostGame: action.payload,
+        ...initialState,
       };
     case "COUNTRY_CLICKED":
-      console.log("COUNTRY_CLICKED", action);
-
-      return {
-        ...state,
-        name: action.payload.name,
-        officialNamename: action.payload.officialName,
-        capitals: action.payload.capitals,
-        population: formatPopulation(action.payload.population),
-        flag: action.payload.flag,
-        isoCode: action.payload.iso,
-        currentNumber: state.currentNumber + 1,
-      };
+      console.log("COUNTRY_CLICKED");
+      return sortedPopulations[state.currentNumber][0] ===
+        action.payload.isoCode
+        ? {
+            ...state,
+            name: action.payload.name,
+            officialNamename: action.payload.officialName,
+            capitals: action.payload.capitals,
+            population: formatPopulation(action.payload.population),
+            flag: action.payload.flag,
+            isoCode: action.payload.iso,
+            currentNumber: state.currentNumber + 1,
+          }
+        : {
+            ...state,
+            lostGame: true,
+          };
     default:
       throw new Error(`No case for type ${type} found in gameReducer.`);
   }

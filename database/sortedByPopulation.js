@@ -1,4 +1,4 @@
-[
+export default [
   ["CN", 1402112000, "People's Republic of China"],
   ["IN", 1380004385, "Republic of India"],
   ["US", 329484123, "United States of America"],

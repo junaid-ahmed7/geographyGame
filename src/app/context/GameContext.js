@@ -6,12 +6,10 @@ const GameContext = createContext(initialState);
 const GameProvider = ({ children }) => {
   const [state, dispatch] = useReducer(gameReducer, initialState);
 
-  const gameOver = () => {
+  const gameReset = () => {
     dispatch({
-      type: "LOST_GAME",
-      payload: {
-        lostGame: false,
-      },
+      type: "RESET_GAME",
+      payload: {},
     });
   };
 
@@ -32,7 +30,7 @@ const GameProvider = ({ children }) => {
 
   const value = {
     ...state,
-    gameOver,
+    gameReset,
     countryClicked,
   };
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;

@@ -1,15 +1,14 @@
-"use client";
-
 import Map from "./maps/Map.jsx";
-import { GameProvider } from "../context/GameContext";
+import { useGameContext } from "../context/GameContext";
 
 const Home = () => {
+  const { lostGame } = useGameContext();
+  console.log(lostGame, "in home");
   return (
     <>
       <h1>Population Game</h1>
-      <GameProvider>
-        <Map />
-      </GameProvider>
+      <Map />
+      {lostGame && <h2>GAME OVER</h2>}
     </>
   );
 };

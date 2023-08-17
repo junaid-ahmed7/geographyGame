@@ -6,6 +6,7 @@ import MapGame from "./MapGame.jsx";
 function Map() {
   // Memoize the data array to prevent unnecessary re-renders
   const data = useMemo(() => {
+    console.log("ITERATING OVER MASSIVE ARRAY")
     return countriesDatabase.map((country) => {
       return {
         country: country.cca2,
@@ -23,7 +24,6 @@ function Map() {
 
   // Memoize the countryClicked function
   const countryClicked = useCallback((data) => {
-    console.log(data);
     setClickedCountry({
       cName: data.countryName,
       iso: data.countryCode,
