@@ -10,6 +10,7 @@ export const initialState = {
   population: "0",
   flag: "",
   isoCode: "",
+  gameReset: () => {},
 };
 
 const gameReducer = (state, action) => {

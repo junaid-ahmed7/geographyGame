@@ -1,14 +1,14 @@
 import Map from "./maps/Map.jsx";
 import { useGameContext } from "../context/GameContext";
+import GameOverModal from "./modals/GameOverModal";
 
 const Home = () => {
-  const { lostGame } = useGameContext();
-  console.log(lostGame, "in home");
+  const { lostGame, gameReset } = useGameContext();
   return (
     <>
       <h1>Population Game</h1>
       <Map />
-      {lostGame && <h2>GAME OVER</h2>}
+      {lostGame && <GameOverModal isOpen={lostGame} handleClose={gameReset} />}
     </>
   );
 };
