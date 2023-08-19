@@ -15,7 +15,7 @@ const GameOverModal = ({
   handleClose,
 }: GameOverModalProps) => {
   const encouragingMessages = [
-    "Don't give up, lets go again!.",
+    "Don't give up, lets go again!",
     "You did great! Keep trying!",
     "Every attempt is a step towards success.",
     "You've got this! Keep challenging yourself.",
