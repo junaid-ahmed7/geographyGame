@@ -2,7 +2,10 @@ import { useGameContext } from "../../context/GameContext";
 import { useEffect } from "react";
 
 const MapGame = ({ clickedCountry }) => {
-  const highScore = localStorage.getItem("mapGameHighScore");
+  let highScore = "0";
+  if (typeof window !== "undefined") {
+    highScore = localStorage.getItem("mapGameHighScore") || "0";
+  }
   const gameState = useGameContext();
 
   useEffect(() => {
