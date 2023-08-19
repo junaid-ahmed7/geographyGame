@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback, useState } from "react";
+import React, { useMemo, useCallback, useState, useEffect } from "react";
 import WorldMap from "react-svg-worldmap";
 import countriesDatabase from "../../../../database/countryDatabase.json";
 import MapGame from "./MapGame.jsx";
@@ -6,7 +6,7 @@ import MapGame from "./MapGame.jsx";
 function Map() {
   // Memoize the data array to prevent unnecessary re-renders
   const data = useMemo(() => {
-    console.log("ITERATING OVER MASSIVE ARRAY")
+    console.log("ITERATING OVER MASSIVE ARRAY");
     return countriesDatabase.map((country) => {
       return {
         country: country.cca2,
@@ -36,19 +36,23 @@ function Map() {
   };
 
   return (
-    <div className="App">
-      <WorldMap
-        color=""
-        title="Start by selecting the country you think is the most populous!"
-        value-suffix="people"
-        size="xxl"
-        data={data}
-        onClickFunction={countryClicked}
-        backgroundColor="black"
-        borderColor="white"
-        tooltipTextFunction={noText}
-      />
-      <MapGame clickedCountry={clickedCountry} />
+    <div className="flex mx-5">
+      <figure className="w-3/4 mr-4">
+        <WorldMap
+          color="black"
+          title=""
+          value-suffix="people"
+          size="responsive"
+          data={data}
+          onClickFunction={countryClicked}
+          backgroundColor="rgb(135, 206, 235)"
+          borderColor="white"
+          tooltipTextFunction={noText}
+        />
+      </figure>
+      <div className="w-1/4">
+        <MapGame clickedCountry={clickedCountry} />
+      </div>
     </div>
   );
 }

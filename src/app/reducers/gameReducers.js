@@ -22,17 +22,17 @@ const gameReducer = (state, action) => {
         ...initialState,
       };
     case "COUNTRY_CLICKED":
-      console.log("COUNTRY_CLICKED");
+      console.log("COUNTRY_CLICKED", action.payload);
       return sortedPopulations[state.currentNumber][0] ===
         action.payload.isoCode
         ? {
             ...state,
             name: action.payload.name,
-            officialNamename: action.payload.officialName,
+            officialName: action.payload.officialName,
             capitals: action.payload.capitals,
             population: formatPopulation(action.payload.population),
             flag: action.payload.flag,
-            isoCode: action.payload.iso,
+            isoCode: action.payload.isoCode,
             currentNumber: state.currentNumber + 1,
           }
         : {

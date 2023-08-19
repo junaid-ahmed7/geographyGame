@@ -14,7 +14,6 @@ const GameProvider = ({ children }) => {
   };
 
   const countryClicked = (country) => {
-    console.log(country, "clicked");
     dispatch({
       type: "COUNTRY_CLICKED",
       payload: {

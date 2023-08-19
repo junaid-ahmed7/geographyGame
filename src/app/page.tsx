@@ -6,7 +6,9 @@ import { GameProvider } from "./context/GameContext";
 export default function App() {
   return (
     <GameProvider>
-      <Home />
+      <div className="bg-gray-800 min-h-screen">
+        <Home />
+      </div>
     </GameProvider>
   );
 }
