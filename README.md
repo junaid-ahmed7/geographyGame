@@ -1,6 +1,6 @@
 # Map Game
 
-This is a fun and educational game that challenges your knowledge of world populations. It's a great way to learn more about the world while having fun at the same time. More modes coming soon! Mobile mode coming soon!
+This is a fun and educational game that challenges your knowledge of world populations. It's a great way to learn more about the world while having fun at the same time. More + mobile modes coming soon!
 
 ## Tech Stack
 
